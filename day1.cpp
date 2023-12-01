@@ -1,3 +1,6 @@
+/*
+    clang++ -std=c++17 day1.cpp -o ~/Desktop/tmp/prog && ~/Desktop/tmp/prog
+*/
 #include <iostream>
 #include <map>
 #include <vector>
