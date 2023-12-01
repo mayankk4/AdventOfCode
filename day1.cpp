@@ -31,7 +31,7 @@ map<string, int> SPELLING_TO_DIGIT {
 
 
 // returns the spelt out digit if found at the given index of line.
-string is_digit_spelt(const string& line, const int& index) {
+string is_digit_spelt(const string& line, const int index) {
     for (const auto& [key, val] : SPELLING_TO_DIGIT) {
         if (advent::is_prefix(key, line, index)) {
             return key;

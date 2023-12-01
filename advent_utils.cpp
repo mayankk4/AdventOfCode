@@ -10,7 +10,7 @@ using ::std::ifstream;
 namespace advent {
 
 // Returns true if key is a prefix of the input starting at given index.
-bool is_prefix(const string& key, const string& input, int index) {
+bool is_prefix(const string& key, const string& input, const int index) {
     for (int i = 0; i < key.size(); ++i) {
         if (index + i > input.size() - 1) return false;
         if (key.at(i) != input.at(index + i)) return false;
@@ -47,6 +47,5 @@ vector<string> read_file(const string& file_path) {
     file.close();
     return result;
 }
-
 
 }
