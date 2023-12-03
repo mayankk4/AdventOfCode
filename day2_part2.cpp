@@ -28,7 +28,6 @@ int get_power(string line) {
     vector<string> id_to_games = advent::str_split(line, ':');
     vector<string> games = advent::str_split(id_to_games[1], ';');
 
-    // In case of wrong answer, init this to 1.
     int max_red = 0;
     int max_blue = 0;
     int max_green = 0;
