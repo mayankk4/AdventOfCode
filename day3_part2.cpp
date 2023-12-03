@@ -51,7 +51,6 @@ int get_connections(
         int end_index = i;
         int num_extracted = stoi(curr_number);
 
-
         // collect all the connections for the number.
         find_adjacent_symbol(start_index, end_index, prev_line, curr_index - 1, num_extracted, connected_numbers);
         find_adjacent_symbol(start_index, end_index, curr_line, curr_index, num_extracted, connected_numbers);

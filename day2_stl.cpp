@@ -33,13 +33,6 @@ bool is_color_valid(const string& color_id, int max_allowed, string game) {
 bool is_valid_line(int max_red, int max_green, int max_blue, string line) {
     vector<string> games = advent::str_split(advent::str_split(line, ':')[1], ';');
 
-    // return std::accumulate(
-    //     games.begin(), games.end(), /*initial value*/ true,
-    //     [&](bool accumulated, string game) {
-    //         return accumulated & is_valid_game(max_red, max_green, max_blue, game);
-    //     }
-    //  );
-
      return std::all_of(
         games.begin(), games.end(),
         [&](string game) {
