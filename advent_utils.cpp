@@ -1,5 +1,6 @@
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 using ::std::vector;
 using ::std::string;
@@ -8,6 +9,19 @@ using ::std::endl;
 using ::std::ifstream;
 
 namespace advent {
+
+// Split a string by delimiter.
+std::vector<std::string> str_split(const string& target, char c) {
+	string temp;
+	std::stringstream s { target };
+	vector<string> result;
+	while (std::getline(s, temp, c)) {
+		result.push_back(temp);
+	}
+	return result;
+}
+
+
 
 // Returns true if key is a prefix of the input starting at given index.
 bool is_prefix(const string& key, const string& input, const int index) {

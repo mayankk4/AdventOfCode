@@ -29,7 +29,6 @@ map<string, int> SPELLING_TO_DIGIT {
     {"nine", 9},
 };
 
-
 // returns the spelt out digit if found at the given index of line.
 string is_digit_spelt(const string& line, const int index) {
     for (const auto& [key, val] : SPELLING_TO_DIGIT) {
