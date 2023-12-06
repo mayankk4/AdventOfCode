@@ -10,13 +10,13 @@ using ::std::ifstream;
 
 namespace advent {
 
-// Split a string by delimiter.
+// Split a string by delimiter. Ignores " " and empty splits.
 std::vector<std::string> str_split(const string& target, char c) {
 	string temp;
 	std::stringstream s { target };
 	vector<string> result;
 	while (std::getline(s, temp, c)) {
-		result.push_back(temp);
+        if (!temp.empty() && (temp != " ")) result.push_back(temp);
 	}
 	return result;
 }
@@ -53,7 +53,7 @@ vector<string> read_file(const string& file_path) {
     cout << "Finished reading " << result.size() << " lines." << endl;
     cout << "Printing a few lines from the file.." << endl;
     cout << "--------------------------" << endl;
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 3 && i < result.size(); ++i) {
         cout << result[i] << endl;
     }
     cout << "--------------------------" << endl;

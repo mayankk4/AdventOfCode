@@ -2,6 +2,8 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <algorithm>
+#include <numeric>
 
 #include "advent_utils.cpp"
 #include "stl_utils.cpp"
