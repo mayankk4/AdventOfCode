@@ -14,8 +14,6 @@ using ::std::string;
 using ::std::map;
 using ::std::set;
 using ::std::vector;
-using ::std::max;
-using ::std::min;
 
 const string kInputFile = "./data/dayX.txt";
 
