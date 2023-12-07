@@ -9,11 +9,6 @@
 #include "advent_utils.cpp"
 #include "stl_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-using ::std::vector;
-using ::std::map;
 using ::std::thread;
 
 using number_t = long long;
@@ -60,7 +55,7 @@ void line_to_map(
     number_t key_start = stonumber_t(splits[1]);
     number_t value_start = stonumber_t(splits[0]);
     number_t num_iter = stonumber_t(splits[2]);
-    std::map<string, number_t> index_map;
+    map<string, number_t> index_map;
     index_map[kSource] = key_start;
     index_map[kDestination] = value_start;
     index_map[kOffset] = num_iter;
@@ -87,7 +82,7 @@ void populate_index_map(
 
 void index(
     const vector<string>& raw_text,
-    std::map<string, data_t>& data) {
+    map<string, data_t>& data) {
     for (auto& [k,v] : data) {
         populate_index_map(raw_text, k, v);
     }
@@ -119,8 +114,8 @@ vector<range_t> process_all_input_ranges_for_data_map(
             continue;
         }
 
-        number_t intersection_start = std::max(curr_range_start, data_map_start);
-        number_t intersection_end = std::min(curr_range_end, data_map_end);
+        number_t intersection_start = max(curr_range_start, data_map_start);
+        number_t intersection_end = min(curr_range_end, data_map_end);
 
         if (intersection_start > curr_range_start) {
             // add lhs range to process
@@ -183,7 +178,7 @@ vector<range_t> get_all_output_ranges_for_step(
 
 number_t process_seed_ranges(
     const vector<range_t>& seed_ranges,
-    const std::map<string, data_t>& data) {
+    const map<string, data_t>& data) {
     vector<range_t> soil = get_all_output_ranges_for_step(seed_ranges, data.at("seed-to-soil"));
     vector<range_t> fertilizer = get_all_output_ranges_for_step(soil, data.at("soil-to-fertilizer"));
     vector<range_t> water = get_all_output_ranges_for_step(fertilizer, data.at("fertilizer-to-water"));
@@ -195,7 +190,7 @@ number_t process_seed_ranges(
     // Get the min number from the location ranges output.
     number_t min_location;
     for (const range_t& range : location) {
-        min_location = std::min(min_location, range.start);
+        min_location = min(min_location, range.start);
     }
     return min_location;
 }
@@ -208,7 +203,7 @@ int main() {
     vector<range_t> seeds;
     populate_seeds(raw_text[0], seeds);
 
-    std::map<string, data_t> data {
+    map<string, data_t> data {
         {"seed-to-soil", data_t()},
         {"soil-to-fertilizer", data_t()},
         {"fertilizer-to-water", data_t()},

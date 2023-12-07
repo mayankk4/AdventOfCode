@@ -2,11 +2,18 @@
 #include <fstream>
 #include <sstream>
 
-using ::std::vector;
-using ::std::string;
+
+using ::std::ifstream;
 using ::std::cout;
 using ::std::endl;
-using ::std::ifstream;
+
+using ::std::string;
+
+using ::std::map;
+using ::std::set;
+using ::std::vector;
+using ::std::max;
+using ::std::min;
 
 namespace advent {
 

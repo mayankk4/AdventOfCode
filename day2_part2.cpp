@@ -2,10 +2,6 @@
 
 #include "advent_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-
 const string kInputFile = "./data/day2.txt";
 
 namespace {
@@ -32,9 +28,9 @@ int get_power(string line) {
     int max_blue = 0;
     int max_green = 0;
     for (const string& game : games) {
-        max_red = std::max(get_balls_of_color("red", game), max_red);
-        max_blue = std::max(get_balls_of_color("blue", game), max_blue);
-        max_green = std::max(get_balls_of_color("green", game), max_green);        
+        max_red = max(get_balls_of_color("red", game), max_red);
+        max_blue = max(get_balls_of_color("blue", game), max_blue);
+        max_green = max(get_balls_of_color("green", game), max_green);        
     }
 
     return max_red * max_blue * max_green;

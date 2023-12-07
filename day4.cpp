@@ -8,9 +8,6 @@
 #include "advent_utils.cpp"
 #include "stl_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
 using advent::str_split;
 
 const string kInputFile = "./data/day4.txt";
@@ -54,7 +51,7 @@ int points_for_card_part1(const string& line) {
 }
 
 // Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
-int points_for_card_part2(const string& line, std::map<int, int>& line_multiplier) {
+int points_for_card_part2(const string& line, map<int, int>& line_multiplier) {
     if (line.empty()) return 0;
     auto winners_to_tickets = str_split(line, '|');
     vector<string> splits = str_split(str_split(winners_to_tickets[0], ':')[0], ' ');
@@ -96,7 +93,7 @@ int main() {
     cout << "Answer: " << count << endl;
 
     cout << " ------ Part 2 ------" << endl;
-    std::map<int, int> line_multiplier;
+    map<int, int> line_multiplier;
     for (int i = 1; i <= raw_text.size(); ++i) {
         line_multiplier[i] = 1;
     }

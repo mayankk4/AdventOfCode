@@ -8,10 +8,6 @@
 
 #include "advent_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-
 const string kInputFile = "./data/day2.txt";
 
 namespace {

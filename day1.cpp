@@ -7,11 +7,6 @@
 
 #include "advent_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-using ::std::map;
-
 const string kInputFile = "./data/day1.txt";
 
 namespace {

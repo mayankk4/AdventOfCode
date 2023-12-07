@@ -9,11 +9,6 @@
 #include "advent_utils.cpp"
 #include "stl_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-using ::std::vector;
-using ::std::map;
 using ::std::thread;
 
 using number_t = long long;
@@ -57,7 +52,7 @@ void line_to_map(
     number_t key_start = stonumber_t(splits[1]);
     number_t value_start = stonumber_t(splits[0]);
     number_t num_iter = stonumber_t(splits[2]);
-    std::map<string, number_t> index_map;
+    map<string, number_t> index_map;
     index_map[kSource] = key_start;
     index_map[kDestination] = value_start;
     index_map[kOffset] = num_iter;
@@ -84,7 +79,7 @@ void populate_index_map(
 
 void index(
     const vector<string>& raw_text,
-    std::map<string, data_t>& data) {
+    map<string, data_t>& data) {
     for (auto& [k,v] : data) {
         // cout << "Populating key: " << k << endl;
         populate_index_map(raw_text, k, v);
@@ -95,7 +90,7 @@ void index(
 number_t get_value_or_default(
     const number_t key,
     const data_t& data) {
-    for (const std::map<string, number_t>& m : data) {
+    for (const map<string, number_t>& m : data) {
         number_t key_range_start = m.at(kSource);
         number_t key_range_end = m.at(kSource) + m.at(kOffset);
         if (key >= key_range_start && key < key_range_end) {
@@ -111,8 +106,7 @@ number_t get_value_or_default(
 
 number_t location_for_seed(
     const number_t seed,
-    const std::map<string, data_t>& data) {
-    // cout << std::to_string(seed) << endl;
+    const map<string, data_t>& data) {
     number_t soil = get_value_or_default(seed, data.at("seed-to-soil"));
     number_t fertilizer = get_value_or_default(soil, data.at("soil-to-fertilizer"));
     number_t water = get_value_or_default(fertilizer, data.at("fertilizer-to-water"));
@@ -125,16 +119,16 @@ number_t location_for_seed(
 
 number_t get_min_location(
     const vector<vector<number_t>>& seeds,
-    const std::map<string, data_t>& data) {
-    std::vector<thread> threads;
-    std::vector<number_t> min_locations;
+    const map<string, data_t>& data) {
+    vector<thread> threads;
+    vector<number_t> min_locations;
     int thread_id = 0;
     for (const auto& seed_range : seeds) {
         thread_id++;
         threads.push_back(thread(
             [thread_id, &min_locations, &seed_range, &data]() {
             number_t min_location = LLONG_MAX;
-            std::set<int> flushed_data;
+            set<int> flushed_data;
             for (number_t i = seed_range[0]; i < seed_range[0] + seed_range[1]; ++i) {
                 int percent = ((i - seed_range[0]) * 100) / seed_range[1];
                 if (flushed_data.find(percent) == flushed_data.end()) {
@@ -144,7 +138,7 @@ number_t get_min_location(
                         " finished: " + std::to_string(percent) + "%";
                     cout << debug << endl;
                 }
-                min_location = std::min(min_location, location_for_seed(i, data));
+                min_location = min(min_location, location_for_seed(i, data));
             }
             min_locations.push_back(min_location);
         }));
@@ -154,7 +148,7 @@ number_t get_min_location(
 
     number_t min_location = LLONG_MAX;
     for (const number_t m : min_locations) {
-        min_location = std::min(min_location, m);
+        min_location = min(min_location, m);
     }
 
     return min_location;
@@ -168,7 +162,7 @@ int main() {
     vector<vector<number_t>> seeds;
     populate_seeds(raw_text[0], seeds);
 
-    std::map<string, data_t> data {
+    map<string, data_t> data {
         {"seed-to-soil", data_t()},
         {"soil-to-fertilizer", data_t()},
         {"fertilizer-to-water", data_t()},

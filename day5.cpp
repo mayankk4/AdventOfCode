@@ -6,12 +6,6 @@
 #include "advent_utils.cpp"
 #include "stl_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-using ::std::vector;
-using ::std::map;
-
 using number_t = long long;
 number_t stonumber_t(const string& s) {
     return stoll(s);
@@ -45,7 +39,7 @@ void line_to_map(
     number_t key_start = stonumber_t(splits[1]);
     number_t value_start = stonumber_t(splits[0]);
     number_t num_iter = stonumber_t(splits[2]);
-    std::map<string, number_t> index_map;
+    map<string, number_t> index_map;
     index_map[kSource] = key_start;
     index_map[kDestination] = value_start;
     index_map[kOffset] = num_iter;
@@ -72,7 +66,7 @@ void populate_index_map(
 
 void index(
     const vector<string>& raw_text,
-    std::map<string, data_t>& data) {
+    map<string, data_t>& data) {
     for (auto& [k,v] : data) {
         // cout << "Populating key: " << k << endl;
         populate_index_map(raw_text, k, v);
@@ -83,7 +77,7 @@ void index(
 number_t get_value_or_default(
     const number_t key,
     const data_t& data) {
-    for (const std::map<string, number_t>& m : data) {
+    for (const map<string, number_t>& m : data) {
         number_t key_range_start = m.at(kSource);
         number_t key_range_end = m.at(kSource) + m.at(kOffset);
         if (key >= key_range_start && key < key_range_end) {
@@ -99,7 +93,7 @@ number_t get_value_or_default(
 
 number_t location_for_seed(
     const number_t seed,
-     const std::map<string, data_t>& data) {
+     const map<string, data_t>& data) {
     // cout << "***" << endl;
     // cout << "seed " << seed << endl;
     number_t soil = get_value_or_default(seed, data.at("seed-to-soil"));
@@ -121,11 +115,11 @@ number_t location_for_seed(
 
 number_t get_min_location(
     const vector<number_t>& seeds,
-    const std::map<string, data_t>& data) {
+    const map<string, data_t>& data) {
     // max-long
     number_t min_location = 9223372036854775807;
     for (const number_t seed : seeds) {
-        min_location = std::min(min_location, location_for_seed(seed, data));
+        min_location = min(min_location, location_for_seed(seed, data));
     }
     return min_location;
 }
@@ -138,7 +132,7 @@ int main() {
     vector<number_t> seeds;
     populate_seeds(raw_text[0], seeds);
 
-    std::map<string, data_t> data {
+    map<string, data_t> data {
         {"seed-to-soil", data_t()},
         {"soil-to-fertilizer", data_t()},
         {"fertilizer-to-water", data_t()},

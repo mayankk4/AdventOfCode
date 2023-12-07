@@ -8,14 +8,6 @@
 #include "advent_utils.cpp"
 #include "stl_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-using ::std::map;
-using ::std::vector;
-using ::std::max;
-using ::std::min;
-
 const string kInputFile = "./data/day7.txt";
 
 // Poker utils

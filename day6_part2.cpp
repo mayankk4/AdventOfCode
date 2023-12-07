@@ -8,10 +8,6 @@
 #include "advent_utils.cpp"
 #include "stl_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-
 const string kInputFile = "./data/day6.txt";
 
 struct Race {

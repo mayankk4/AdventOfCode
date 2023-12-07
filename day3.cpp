@@ -2,11 +2,6 @@
 
 #include "advent_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-using ::std::max;
-using ::std::min;
 using ::std::isdigit;
 
 const string kInputFile = "./data/day3.txt";

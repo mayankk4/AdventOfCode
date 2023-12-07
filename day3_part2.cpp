@@ -3,11 +3,6 @@
 
 #include "advent_utils.cpp"
 
-using ::std::string;
-using ::std::cout;
-using ::std::endl;
-using ::std::max;
-using ::std::min;
 using ::std::isdigit;
 
 const string kInputFile = "./data/day3.txt";
@@ -17,7 +12,7 @@ namespace {
 void find_adjacent_symbol(
     int start_index, int end_index, const string& line,
     int line_index, int num_extracted,
-    std::map<string, vector<int>>& connected_numbers) {
+    map<string, vector<int>>& connected_numbers) {
     if (line.empty()) return;
     int start = max(0, start_index - 1);
     int end = min(end_index, int(line.size()) - 1);
@@ -36,7 +31,7 @@ void find_adjacent_symbol(
 int get_connections(
     const string& prev_line, const string& curr_line, const string& next_line,
     int curr_index,
-    std::map<string, vector<int>>& connected_numbers) {
+    map<string, vector<int>>& connected_numbers) {
     int count = 0;
     for (int i = 0; i < curr_line.size(); ++i) {
         if (!isdigit(curr_line.at(i))) continue;
@@ -64,7 +59,7 @@ int get_connections(
 int main() {
     vector<string> raw_text = advent::read_file(kInputFile);
 
-    std::map<string, vector<int>> connected_numbers;
+    map<string, vector<int>> connected_numbers;
 
     // collect connected numbers
     for (int i = 0; i < raw_text.size(); i++) {
