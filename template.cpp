@@ -29,5 +29,5 @@ int main() {
 
         });
 
-    cout << "Answer: " << count;
+    cout << "Answer: " << count << endl;
 }
