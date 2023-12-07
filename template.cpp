@@ -8,9 +8,12 @@
 #include "advent_utils.cpp"
 #include "stl_utils.cpp"
 
-using ::std::string;
 using ::std::cout;
 using ::std::endl;
+using ::std::string;
+using ::std::map;
+using ::std::set;
+using ::std::vector;
 
 const string kInputFile = "./data/dayX.txt";
 
