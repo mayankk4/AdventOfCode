@@ -13,7 +13,7 @@ int get_balls_of_color(const string& color_id, string game) {
     for (const string& draw : game_draws) {
         vector<string> draw_to_color = advent::str_split(draw, ' ');
         if (!(draw_to_color[draw_to_color.size() - 1] == color_id)) continue;
-        return stoi(draw_to_color[1]);
+        return stoi(draw_to_color[0]);
     }
     return 0;
 }
@@ -36,7 +36,6 @@ int get_power(string line) {
     return max_red * max_blue * max_green;
 }
 }  // namespace
-
 
 int main() {
     vector<string> raw_text = advent::read_file(kInputFile);

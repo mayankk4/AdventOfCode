@@ -12,19 +12,17 @@ bool is_color_valid(const string& color_id, int max_allowed, string game) {
     // draw = " 10 green"
     for (const string& draw : game_draws) {
         vector<string> draw_to_color = advent::str_split(draw, ' ');
-        if (!(draw_to_color[draw_to_color.size() - 1] == color_id)) continue;
-        return (stoi(draw_to_color[1]) <= max_allowed);
+        if (!(draw_to_color[1] == color_id)) continue;
+        return (stoi(draw_to_color[0]) <= max_allowed);
     }
     return true;
 }
-
 
 bool is_valid_game(int max_red, int max_green, int max_blue, string game) {
     return is_color_valid("red", max_red, game) &&
         is_color_valid("green", max_green, game) && 
         is_color_valid("blue", max_blue, game);
 }
-
 
 // returns the id of the valid game, else returns 0.
 // Game 1: 10 green, 5 blue; 1 red, 9 green, 10 blue; 5 blue, 6 green, 2 red; 7 green, 9 blue, 1 red; 2 red, 10 blue, 10 green; 7 blue, 1 red
@@ -40,7 +38,6 @@ int is_valid_line(int max_red, int max_green, int max_blue, string line) {
     return game_id;
 }
 }  // namespace
-
 
 int main() {
     vector<string> raw_text = advent::read_file(kInputFile);

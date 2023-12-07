@@ -19,11 +19,10 @@ bool is_color_valid(const string& color_id, int max_allowed, string game) {
     for (const string& draw : game_draws) {
         vector<string> draw_to_color = advent::str_split(draw, ' ');
         if (!(draw_to_color[draw_to_color.size() - 1] == color_id)) continue;
-        return (stoi(draw_to_color[1]) <= max_allowed);
+        return (stoi(draw_to_color[0]) <= max_allowed);
     }
     return true;
 }
-
 
 // Game 1: 10 green, 5 blue; 1 red, 9 green, 10 blue; 5 blue, 6 green, 2 red; 7 green, 9 blue, 1 red; 2 red, 10 blue, 10 green; 7 blue, 1 red
 bool is_valid_line(int max_red, int max_green, int max_blue, string line) {
@@ -39,7 +38,6 @@ bool is_valid_line(int max_red, int max_green, int max_blue, string line) {
      );
 }
 }  // namespace
-
 
 int main() {
     const int max_red = 12;
