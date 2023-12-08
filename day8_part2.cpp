@@ -103,5 +103,5 @@ int main() {
     long lcm = cycles[0];
     for (int i : cycles) lcm = std::lcm(lcm, i);
 
-    cout << endl << "Answer: " << lcm << endl;
+    cout << "Answer: " << lcm << endl;
 }
