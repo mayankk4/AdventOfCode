@@ -60,11 +60,11 @@ vector<string> read_file(const string& file_path) {
 
     cout << "Finished reading " << result.size() << " lines." << endl;
     cout << "Printing a few lines from the file.." << endl;
-    cout << "--------------------------" << endl;
-    for (int i = 0; i < 3 && i < result.size(); ++i) {
+    cout << "----------------------------------------------------" << endl;
+    for (int i = 0; i < 12 && i < result.size(); ++i) {
         cout << result[i] << endl;
     }
-    cout << "--------------------------" << endl;
+    cout << "----------------------------------------------------" << endl;
 
     file.close();
     return result;
